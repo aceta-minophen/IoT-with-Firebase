@@ -63,4 +63,151 @@ Web-page ---> Firebase Realtime Database ---> NodeMCU (Wi-Fi Module)
 The reverse is also possible with slight change in code, but this project's focus is currently only on the given schematic.
 
 ## Step-by-Step Guide 👩‍💻
-### Creating a Node.js project
+### 1. Creating a Node.js project
+#### 1. Main root directory
+This is the folder where all of your subsequent files and folders will be stored. Create this folder and preferably name it the name of your project. Mine is `iot-firebase`.
+#### 2. Public 
+Create this folder inside the root directory (created above). This will contain all the css, html and javascript files we'll be working on.
+#### 3. Node_modules
+1. Open terminal in the root directory and run `npm init`. This will initialize NPM to our project. _This creates a package.json file in the root directory._
+2. Now we will add some packages: Express.js & nodemon by typing the following in terminal: `npm i express.js nodemon`. Express.js creates a server; Nodemon is used to run the server continuously. _This step creates a node_modules directory along with package-lock.json files._
+3. Open the `package.json` file and change the `scripts` block as follows:
+```
+"scripts": {
+    "start": "nodemon index.js"
+  },
+```
+4. Now creat an `index.js` file in the root directory and write the following code in it:
+```
+/*Importing the packages we need*/
+const express = require('express');
+const path = require('path');
+
+let initial_path = path.join(__dirname, "public"); //Store the public folder path inside a variable
+
+const app = express(); //creating express.js server
+app.use(express.static(initial_path)); //set public folder path to static path
+
+app.get('/', (req, res) => {
+    res.sendFile(path.join(initial_path, "light_switch.html"));
+})
+
+/*Running the server on port 8080*/
+app.listen("8080", () => {
+    console.log('listening.....');
+})
+```
+### 2. Making the toggle switch
+We want to create a webpage with a toggle switch that just changes text for now. For this purpose, we'll be creating 3 files, namely:
+- light_switch.html (for web-page)
+- style.css (for styling the switch and adding toggle functionality)
+- switch.js (for programming what happens which the switch is toggled; in this case only the text bellow the button will change from 'light on' to light 'off' and vice versa.
+Create all these files in the `public` directory we created initially.
+#### 1. Firstly, we make the html file as follows:
+```
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IoTECO</title>
+    <script src="switch.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1>Light Switch</h1>
+    <p>LED Control</p>
+    <label class="switch">
+        <input type="checkbox" onclick="myFunction()">
+        <span class="slider round"></span>
+    </label>
+
+    <div id="myDIV">Light Off</div>
+
+
+</body>
+
+</html>
+```
+> The myFunction() functions is going to be implemented from the Javascript file we'll create.
+#### 2. Create the css file:
+```
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+  }
+  
+  .switch input { 
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgb(73, 72, 72);
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: rgb(0, 0, 0);
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  input:checked + .slider {
+    background-color: #F9A826;
+  }
+  
+  input:focus + .slider {
+    box-shadow: 0 0 1px #F9A826;
+  }
+  
+  input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+  }
+  
+
+/* Rounded sliders */
+.slider.round {
+    border-radius: 34px;
+  }
+  
+  .slider.round:before {
+    border-radius: 50%;
+  }
+```
+You can change the style as you wish. Have fun with it!
+#### 3. Creating the JavaSscript file
+Here we create myFunction().
+```
+function myFunction() {
+    var x = document.getElementById("myDIV");
+    if (x.innerHTML === "Light Off") {
+        x.innerHTML = "Light On";
+    } else {
+        x.innerHTML = "Light Off";
+    }
+}
+```
+
+Now the toggle switch is working perfectly.

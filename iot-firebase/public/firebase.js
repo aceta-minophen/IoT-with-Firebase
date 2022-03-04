@@ -2,13 +2,13 @@ var val = 0;
 
 /*Configure Firebase*/
 var firebaseConfig = {
-    apiKey: "AIzaSyAiA1LRQoP0jU4b4SW6mBfgFRnY1cSKFWw",
-    authDomain: "suk-dev-9ca7c.firebaseapp.com",
-    databaseURL: "https://suk-dev-9ca7c-default-rtdb.firebaseio.com/", //find this link on top of your database
-    projectId: "suk-dev-9ca7c",
-    storageBucket: "suk-dev-9ca7c.appspot.com",
-    messagingSenderId: "780557443801",
-    appId: "1:780557443801:web:13269b359f2269788854c8"
+    apiKey: "Given app ID",
+    authDomain: "name.firebaseapp.com",
+    databaseURL: "https://name-default.firebaseio.com/", //find this link on top of your database
+    projectId: "name",
+    storageBucket: "name.appspot.com",
+    messagingSenderId: "ID",
+    appId: "app ID"
 };
 firebase.initializeApp(firebaseConfig); //Initialize Firebase
 

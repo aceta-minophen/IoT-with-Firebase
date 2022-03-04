@@ -1,7 +1,7 @@
-# IoT-with-Firebase
+# IoT-with-Firebase 🔥
 An easy to follow tutorial for using Firebase to transfer data from website to Wi-Fi module (NodeMCU). This code focuses on making a simple toggle switch to turn light on and off, but can be expanded for receiving and sending more data (integers, strings or bool) following the same steps.
 ## Components and Tools Used 🧮
-### Softwares
+### Softwares 💻
 
 In this project, we will be using Node.js. 
 > Node.js® is a JavaScript-based environment which you can use to create web-servers and networked applications. You can also use it to perform helpful tasks on your computer such as concatenating and minifying JavaScript files and compiling Sass files into CSS.
@@ -20,7 +20,7 @@ After following the steps, we will successfully be able to use the following too
 - CSS
 - JavaScript 
 
-### Firebase
+### Firebase 👩‍🚒
 To get started with Firebase, follow these steps:
 1. Log into the [Firebase console](https://console.firebase.google.com)
 2. Click on **Add Project**
@@ -45,10 +45,10 @@ To get started with Firebase, follow these steps:
 ```
 13. **Publish** the changes, and we are done! 
 
-### Hardware
+### Hardware 👩‍🔧
 We will only be requiring a Wi-Fi Module for now as we will only be controlling a small LED. 
 
-I used **NodeMCU ESP8266 Board** for my purposes. 
+I used **NodeMCU ESP8266 Board** for my purposes. If you are using the same board, make sure your Arduino IDE is configured for uploading codes to NodeMCU. [This webpage](https://www.instructables.com/IoT-ESP8266-Series-1-Connect-to-WIFI-Router/) provides a detailed overview of the configurations.
 
 This project can easily be transformed and expanded further by adding more hardware without much need for change in the code. Examples include:
 - Adding a relay to control bulb or tubelight for remote control of home lighting system
@@ -63,12 +63,12 @@ Web-page ---> Firebase Realtime Database ---> NodeMCU (Wi-Fi Module)
 The reverse is also possible with slight change in code, but this project's focus is currently only on the given schematic.
 
 ## Step-by-Step Guide 👩‍💻
-### 1. Creating a Node.js project
-#### 1. Main root directory
+### 1. Creating a Node.js project 🪛
+#### 1. Main root directory 📁
 This is the folder where all of your subsequent files and folders will be stored. Create this folder and preferably name it the name of your project. Mine is `iot-firebase`.
-#### 2. Public 
+#### 2. Public 💠
 Create this folder inside the root directory (created above). This will contain all the css, html and javascript files we'll be working on.
-#### 3. Node_modules
+#### 3. Node_modules 🖱️
 1. Open terminal in the root directory and run `npm init`. This will initialize NPM to our project. _This creates a package.json file in the root directory._
 2. Now we will add some packages: Express.js & nodemon by typing the following in terminal: `npm i express.js nodemon`. Express.js creates a server; Nodemon is used to run the server continuously. _This step creates a node_modules directory along with package-lock.json files._
 3. Open the `package.json` file and change the `scripts` block as follows:
@@ -97,7 +97,7 @@ app.listen("8080", () => {
     console.log('listening.....');
 })
 ```
-### 2. Making the toggle switch
+### 2. Making the toggle switch 🔲
 We want to create a webpage with a toggle switch that just changes text for now. For this purpose, we'll be creating 3 files, namely:
 - light_switch.html (for web-page)
 - style.css (for styling the switch and adding toggle functionality)
@@ -211,7 +211,7 @@ function myFunction() {
 ```
 
 Now the toggle switch is working perfectly.
-### 3.  Integrating Firebase to the Project
+### 3.  Integrating Firebase to the Project 🎛️
 1. Add the given line inside the `<head></head>` block of the html file:
 
 `<script src="https://www.gstatic.com/firebasejs/5.5.1/firebase.js"></script>`
@@ -281,7 +281,7 @@ function buttonClick() {
 ```
 Saving this code will successfully enable us to toggle the switch and send data to firebase by toggling the switch.
 
-### 4. Last Step: Code for the Wi-Fi Module
+### 4. Last Step: Code for the Wi-Fi Module 🔐
 To be able to control our Wi-Fi Module (NodeMCU), we will first have to install a library which enables us to connect with Firebase.
 1. Install `Firebase Arduino Client Library for ESP8266 and ESP32 by Mobitz`
 2. Follow [this tutorial](https://randomnerdtutorials.com/esp8266-nodemcu-firebase-realtime-database/#esp8266-read-data-firebase) for installation details, but the code given doesn't work because a few important lines are missing. The missing lines are given in the example by [Mozbit](https://github.com/mobizt/Firebase-ESP8266/blob/master/examples/ExternalClient/RTDB/Basic/Basic.ino) (the person whose library we are using).
@@ -394,5 +394,6 @@ void loop() {
   }
 }
 ```
+## Final Comments 😶‍🌫️
 
-Great! Now the built-in LED of the NodeMCU should turn on when the switch on the website is toggled.
+Great! Now the built-in LED of the NodeMCU should turn on when the switch on the website is toggled. If there is any problem, feel free to create an issue or contact me!

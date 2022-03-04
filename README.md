@@ -211,3 +211,4 @@ function myFunction() {
 ```
 
 Now the toggle switch is working perfectly.
+### 3.  Integrating Firebase to the Project

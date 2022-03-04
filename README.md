@@ -45,3 +45,22 @@ To get started with Firebase, follow these steps:
 ```
 13. **Publish** the changes, and we are done! 
 
+### Hardware
+We will only be requiring a Wi-Fi Module for now as we will only be controlling a small LED. 
+
+I used **NodeMCU ESP8266 Board** for my purposes. 
+
+This project can easily be transformed and expanded further by adding more hardware without much need for change in the code. Examples include:
+- Adding a relay to control bulb or tubelight for remote control of home lighting system
+- Getting data from various sensors and displaying them on your website
+- Making web apps for further control of electronic and electrical devices like fans, refrigerators, etc.
+
+## Schematics 🏗️
+The data transfer will procede as follows:
+```
+Web-page ---> Firebase Realtime Database ---> NodeMCU (Wi-Fi Module)
+```
+The reverse is also possible with slight change in code, but this project's focus is currently only on the given schematic.
+
+## Step-by-Step Guide 👩‍💻
+### Creating a Node.js project

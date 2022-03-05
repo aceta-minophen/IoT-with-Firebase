@@ -97,6 +97,7 @@ app.listen("8080", () => {
     console.log('listening.....');
 })
 ```
+5. To start the server, type `npm start` in the terminal.
 ### 2. Making the toggle switch 🔲
 We want to create a webpage with a toggle switch that just changes text for now. For this purpose, we'll be creating 3 files, namely:
 - light_switch.html (for web-page)
